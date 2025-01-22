@@ -2,15 +2,23 @@
 #                       C(A,B)
 # multilevel inheritance = Inherit from a parent which inherits from another parent
 #                           c(B) < --B(A) <--A
+class Animal:
+    def __init__(self,name):
+        self.name = name
+    def eat(self):
+        print(f"This {self.name} is eating.")
+        
+    def sleep(self):
+        print(f"This {self.name} is sleeping.")
 
-class Prey:
+class Prey(Animal):
     def flee(self):
-        print("This animal is fleeing.")
+        print(f"This {self.name} is fleeing.")
     
 
-class Predator:
+class Predator(Animal):
     def hunt(self):
-        print("This animal is hunting.")
+        print(f"This {self.name} is hunting.")
 
 class Rabbit(Prey):
     pass
@@ -21,9 +29,13 @@ class Fish(Prey,Predator):
 class Hawk(Predator):
     pass
 
-rabbit = Rabbit()
-hawk = Hawk()
-fish = Fish()
+rabbit = Rabbit("Bugs")
+hawk = Hawk("Tony")
+fish = Fish("Nemo")
 
 fish.flee()
 fish.hunt()
+
+fish.hunt()
+hawk.sleep()
+hawk.eat()
